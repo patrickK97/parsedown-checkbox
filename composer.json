@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "singular-it/parsedown-extra": "^0.8.1",
+        "singular-it/parsedown-extra": "^0.9.0",
         "erusev/parsedown": "^1.7.4"
     },
     "require-dev": {
