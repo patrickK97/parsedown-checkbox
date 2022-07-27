@@ -1,5 +1,4 @@
 <?php
-
 /**
  * This file is part of the ParsedownCheckbox package.
  *
@@ -10,7 +9,7 @@
  */
 class ParsedownCheckbox extends ParsedownExtra
 {
-    const VERSION = '0.3.4';
+    const VERSION = '0.3.5';
 
     public function __construct()
     {
@@ -40,8 +39,8 @@ class ParsedownCheckbox extends ParsedownExtra
 
     protected function blockListComplete(array $block)
     {
-        foreach ($block['element']['elements'] as &$li_element) {
-            foreach ($li_element['handler']['argument'] as $text) {
+        foreach ($block['element']['text'] as &$li_element) {
+            foreach ($li_element['text'] as $text) {
                 $begin_line = substr(trim($text), 0, 4);
                 if ('[ ] ' === $begin_line) {
                     $li_element['attributes'] = ['class' => 'parsedown-task-list parsedown-task-list-open'];
@@ -60,10 +59,7 @@ class ParsedownCheckbox extends ParsedownExtra
 
     protected function blockCheckboxComplete(array $block)
     {
-        $block['element'] = [
-            'rawHtml' => $this->{$block['handler']}($block['text']),
-            'allowRawHtmlInSafeMode' => true,
-        ];
+        $block['markup'] = $this->{$block['handler']}($block['text']);
 
         return $block;
     }
@@ -74,7 +70,7 @@ class ParsedownCheckbox extends ParsedownExtra
             $text = self::escape($text);
         }
 
-        return '<input type="checkbox" disabled /> ' . $this->format($text);
+        return '<input type="checkbox" disabled /> '.$text;
     }
 
     protected function checkboxChecked($text)
@@ -83,31 +79,6 @@ class ParsedownCheckbox extends ParsedownExtra
             $text = self::escape($text);
         }
 
-        return '<input type="checkbox" checked disabled /> ' . $this->format($text);
-    }
-
-    /**
-     * Formats the checkbox label without double escaping.
-     * @param string $text the string to format
-     * @return string the formatted text
-     */
-    protected function format($text)
-    {
-        // backup settings
-        $markup_escaped = $this->markupEscaped;
-        $safe_mode = $this->safeMode;
-
-        // disable rules to prevent double escaping.
-        $this->setMarkupEscaped(false);
-        $this->setSafeMode(false);
-
-        // format line
-        $text = $this->line($text);
-
-        // reset old values
-        $this->setMarkupEscaped($markup_escaped);
-        $this->setSafeMode($safe_mode);
-
-        return $text;
+        return '<input type="checkbox" checked disabled /> '.$text;
     }
 }
