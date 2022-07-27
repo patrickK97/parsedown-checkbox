@@ -10,7 +10,7 @@
  */
 class ParsedownCheckbox extends ParsedownExtra
 {
-    const VERSION = '0.3.3';
+    const VERSION = '0.3.4';
 
     public function __construct()
     {
