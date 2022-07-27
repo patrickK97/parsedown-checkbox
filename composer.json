@@ -13,8 +13,8 @@
         }
     ],
     "require": {
-        "singular-it/parsedown-extra": "^0.8.0-beta-1",
-        "erusev/parsedown": "^1.8.0-beta"
+        "singular-it/parsedown-extra": "^0.8.1",
+        "erusev/parsedown": "^1.7.4"
     },
     "require-dev": {
         "phpunit/phpunit": "^7.5"
