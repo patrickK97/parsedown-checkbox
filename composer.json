@@ -1,5 +1,5 @@
 {
-    "name": "leblanc-simon/parsedown-checkbox",
+    "name": "singular-it/parsedown-checkbox",
     "description": "An extension of Parsedown and ParsedownExtra that adds support for checkbox",
     "keywords": ["markdown", "markdown extra", "parser", "parsedown", "checkbox"],
     "homepage": "https://github.com/leblanc-simon/parsedown-checkbox",
